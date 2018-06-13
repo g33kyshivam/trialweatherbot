@@ -25,12 +25,13 @@ def webhook():
     # print(res)
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
-    return r 
+return r 
 
 # Extract the parameter from JSON , AJAX to openwaether , construct the respone according to it
 def makeResponse(req):
     if req.get("result").get("action") != "fetchWeatherForecast":
-        return {}
+    
+    return {}
     # getting the json data in place
     result = req.get("result")
     parameters = result.get("parameters")
@@ -39,7 +40,7 @@ def makeResponse(req):
     date = parameters.get("date")
     # query the API
     if city is None:
-        return None
+    return None
     r=requests.get('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=06f070197b1f60e55231f8c46658d077')
     # retireve
     json_object = r.json()
